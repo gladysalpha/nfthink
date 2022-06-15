@@ -1,0 +1,21 @@
+{
+  "name": "nfthink-magic-eden-collection-read",
+  "version": "1.0.0",
+  "description": "NFThink script to read collections from magic eden",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "NFT",
+    "NFThink",
+    "\"Magic",
+    "Eden\""
+  ],
+  "author": "\"Ozan Gözcü\",\"Ömer Ediz Aydın\"",
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
+  }
+}

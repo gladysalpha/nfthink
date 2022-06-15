@@ -1,0 +1,41 @@
+CREATE DATABASE IF NOT EXISTS turtle_db CHARACTER SET utf8mb4 COLLATE utf8mb4_turkish_ci;
+
+DROP TABLE IF EXISTS ntfs;
+CREATE TABLE nfts(
+    id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    name varchar(255) NOT NULL,
+    symbol varchar(500) NOT NULL,
+    nft_photo varchar(500) NOT NULL DEFAULT 'avatar.png',
+    web_site varchar(255) NOT NULL,
+    discord_account varchar(255) NOT NULL,
+    discord_member_count int NOT NULL DEFAULT -1,
+    discord_online_member_count int NOT NULL DEFAULT -1,
+    twitter_account varchar(255) NOT NULL,
+    twitter_follower_count int NOT NULL DEFAULT -1,
+    point int NOT NULL DEFAULT -1,
+    verified boolean NOT NULL DEFAULT false,
+    collection_size int NOT NULL DEFAULT -1,
+    markets_to_list int NOT NULL DEFAULT -1,
+    mint_price double NOT NULL DEFAULT -0.1,
+    created_at DATETIME NOT NULL DEFAULT NOW(),
+    updated_at DATETIME NOT NULL DEFAULT NOW()
+);
+
+DROP TABLE IF EXISTS scrapped_words;
+CREATE TABLE scrapped_words(
+    id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    word varchar(20) NOT NULL,
+    count int NOT NULL DEFAULT 0,
+    nft_id int NOT NULL,
+    created_at DATETIME NOT NULL DEFAULT NOW(),
+    updated_at DATETIME NOT NULL DEFAULT NOW(),
+    FOREIGN KEY (nft_id) REFERENCES nfts (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
+
+DROP TABLE IF EXISTS mainpage;
+CREATE TABLE mainpage(
+    id int PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    device_id varchar(500),
+    nft_id int,
+    FOREIGN KEY (nft_id) REFERENCES nfts (id) ON UPDATE CASCADE ON DELETE CASCADE
+);
